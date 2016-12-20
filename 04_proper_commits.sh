@@ -11,13 +11,12 @@ cd $REPO
 
 COMMITS=$(git log --oneline --no-merges  2>/dev/null | awk '{print $1}')
 
-
 LINES_NECESSARY=5
 SUBSTANTIAL_COMMITS=0
 
 for COMMIT in $COMMITS; do
-    CHANGE_SIZE=$(git diff --shortstat $COMMIT ${COMMIT}^1 | awk '{print $4 + $6}')
-    if [ $CHANGE_SIZE -gt $LINES_NECESSARY ]; then
+    CHANGE_SIZE=$(git diff --shortstat $COMMIT ${COMMIT}^1 | awk '{print $4 + $6}' 2>/dev/null)
+    if [ "$CHANGE_SIZE" -gt $LINES_NECESSARY ]; then
 	SUBSTANTIAL_COMMITS=$((SUBSTANTIAL_COMMITS+1))	
     fi
 done
