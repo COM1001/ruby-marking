@@ -21,7 +21,6 @@ p.sendline("s")
 p.expect(re.compile('number of turns', re.IGNORECASE))
 output2 = p.before
 p.close()
-print(output2)
 
 if output1 == output2:
   print("[-] Board initialised with fixed values")
