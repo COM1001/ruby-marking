@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then
     exit 0
 else
     echo "[-] Source code is not formatted according to style guide:"
-    echo $OUTPUT
+    echo -e $OUTPUT
     exit 1
 fi
 
