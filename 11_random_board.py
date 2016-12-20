@@ -2,6 +2,7 @@
 
 import pexpect
 import re
+import sys
 
 command = "ruby %s/floodit.rb" % sys.argv[1]
 p = pexpect.spawn(command)
