@@ -3,7 +3,7 @@
 REPO=$1
 
 if [ ! -d $REPO/.git ]; then
-  echo "[-] no git repository, cannot check status"
+  echo "[-] no git repository, cannot check commits"
   exit 1
 fi
 

@@ -2,7 +2,7 @@
 
 REPO=$1
 
-OUTPUT=$(rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines,Style/SpaceInsideBrackets -D $REPO/floodit.rb)
+OUTPUT=$(rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines,Style/SpaceInsideBrackets,SpaceInsideBrackets -D $REPO/floodit.rb)
 
 if [ $? -eq 0 ]; then
     echo "[+] Source code is formatted according to style guide"

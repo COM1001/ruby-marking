@@ -3,7 +3,7 @@
 REPO=$1
 
 if [ ! -d $REPO/.git ]; then
-  echo "[-] .git directory does not exist."
+  echo "[-] no git repository, cannot check if everything is pushed."
   exit 1
 fi
 
