@@ -3,7 +3,7 @@
 REPO=$1
 
 if [ ! -d $REPO/.git ]; then
-  echo "$REPO git repository does not exist."
+  echo "[-] Git repository does not exist."
   exit 1
 fi
 
