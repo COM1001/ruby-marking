@@ -1,27 +1,39 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
+REPO=$1
 SCRIPT=$REPO/floodit.rb
 
-if [ ! -d $REPO/Gemfile ]; then
-  echo "[-] Gemfile does not exist, can't check for splash gem."
-  exit 1
+if [ ! -e $REPO/Gemfile ]; then
+    echo "[-] Gemfile does not exist, can't check for splash gem."
+    exit 1
 fi
 
-if [ ! -d $REPO/Gemfile.lock ]; then
-  echo "[-] Gemfile.lock does not exist, can't check for splash gem."
-  exit 1
+if [ ! -e $REPO/Gemfile.lock ]; then
+    echo "[-] Gemfile.lock does not exist, can't check for splash gem."
+    exit 1
 fi
 
 cd $REPO
 
-# TODO: Check if installed without bundler?
+bundle list | grep -q console_splash
 
-if $(bundle list | grep -q console_splash)); then
-    echo "[-] Gem console_splash is not bundled"
+if [ $? -ne 0 ]; then
+  echo "[-] Gem console_splash is not bundled"
+  exit 1					      
 fi
-					   
-echo "[+] Gem console_splash is installed with bundler.
 
-# TODO: Mock splash.splash and check it is called (before hitting enter)
+workfile="/tmp/floodit_tmp.rb"
 
+echo "require 'mocha/api'" > $workfile
+echo "require 'console_splash'" >> $workfile
+echo "ConsoleSplash.expects(:splash).returns(exit(27))" >> $workfile
+cat floodit.rb >> $workfile
+
+ruby $workfile
+
+if [ $? -eq 27 ]; then
+    echo "[+] Gem console_splash is used"
+else
+    echo "[-] Gem console_splash is installed but not used"
+    exit 1
+fi

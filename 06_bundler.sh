@@ -1,14 +1,14 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
+REPO=$1
 
-if [ ! -d $REPO/Gemfile ]; then
+if [ ! -e $REPO/Gemfile ]; then
   echo "[-] Gemfile does not exist."
   exit 1
 fi
 
 # This might not work
-if [ ! -d $REPO/Gemfile.lock ]; then
+if [ ! -e $REPO/Gemfile.lock ]; then
   echo "[-] Gemfile.lock does not exist."
   exit 1
 fi
