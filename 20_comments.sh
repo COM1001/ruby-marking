@@ -1,11 +1,8 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
-
+REPO=$1
 
 COMMENTS=$(grep -E ".*#[^\{].*$" $REPO/floodit.rb | sed -e 's/^.*#//g')
-
-
 
 if [ $(echo $COMMENTS | wc -l) -lt 10 ]; then
     echo "[+] Well documented code"

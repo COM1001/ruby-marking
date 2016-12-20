@@ -1,14 +1,12 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
-
+REPO=$1
 
 # Bad: for
 if grep -Eq '\bfor\b' $REPO/floodit.rb; then
     echo "[-] Use of standard for loops found"
     exit 1
 fi
-
 
 # Good: .each
 if grep -Eq '\.each\b' $REPO/floodit.rb; then

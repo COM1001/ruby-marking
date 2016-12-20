@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
+REPO=$1
 
 NUM_METHODS=$(grep -E "\bdef\b" $REPO/floodit.rb | wc -l)
 

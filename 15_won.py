@@ -6,8 +6,7 @@ import sys
 from colorama import Back, Style
 
 workfile = "/tmp/floodit_tmp.rb"
-print(sys.argv[0])
-script = open(sys.argv[1], 'r')
+script = open("%s/floodit.rb" % sys.argv[1], 'r')
 of = open(workfile, 'w')
 
 of.write("""require 'mocha/api'

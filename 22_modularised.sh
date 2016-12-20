@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
+REPO=$1
 
 RUBOCOP_FILE=/tmp/rubocop_tmp.yml
 echo "Metrics/MethodLength:" > $RUBOCOP_FILE

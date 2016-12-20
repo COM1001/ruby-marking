@@ -1,7 +1,6 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
-
+REPO=$1
 
 OUTPUT=$(rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName -D $REPO/floodit.rb)
 

@@ -3,7 +3,7 @@
 import pexpect
 import re
 
-command = "ruby floodit.rb"
+command = "ruby %s/floodit.rb" % sys.argv[1]
 p = pexpect.spawn(command)
 p.sendline()
 p.expect("Main menu")
@@ -12,7 +12,7 @@ p.expect("Number of turns")
 output1 = p.before
 p.close()
 
-command = "ruby floodit.rb"
+command = "ruby %s/floodit.rb" % sys.argv[1]
 p = pexpect.spawn(command)
 p.sendline()
 p.expect(re.compile('main menu', re.IGNORECASE))

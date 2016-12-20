@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO=/home/codio/workspace/flood-it
+REPO=$1
 
 if [ ! -d $REPO/.git ]; then
   echo ".git directory does not exist."
