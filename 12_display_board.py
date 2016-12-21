@@ -40,7 +40,7 @@ try:
   p.logfile = fout
   p.setecho(True)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE))
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
   p.expect(pexpect.TIMEOUT, timeout=2)
 
