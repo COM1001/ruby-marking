@@ -4,7 +4,7 @@ REPO=$1
 
 RUBOCOP_FILE=/tmp/rubocop_tmp.yml
 echo "Metrics/MethodLength:" > $RUBOCOP_FILE
-echo "  Max: 20" >> $RUBOCOP_FILE
+echo "  Max: 30" >> $RUBOCOP_FILE
 
 OUTPUT=$(rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb)
 
