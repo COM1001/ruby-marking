@@ -34,7 +34,7 @@ p.sendline()
 try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
 
   p.sendline("r")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)

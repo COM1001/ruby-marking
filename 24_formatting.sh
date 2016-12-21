@@ -8,8 +8,9 @@ if [ $? -eq 0 ]; then
     echo "[+] Source code is formatted according to style guide"
     exit 0
 else
-    echo "[-] Source code is not formatted according to style guide:"
+    echo "[-] Source code is not formatted according to style guide. Here is the output of Rubocop:"
     rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines -D $REPO/floodit.rb
     exit 1
 fi
 
+#SpaceInsideParens,SpaceAroundOperators,RedundantParentheses,EmptyLinesAroundMethodBody,NilComparison,NonNilCheck,GuardClause,Next,IndentationWidth,RedundantReturn

@@ -28,7 +28,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("s")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
 
   regex = re.compile('.*turns:', re.IGNORECASE)
   x = int(re.sub("[^0-9]", "", re.sub(regex, "", p.after)))

@@ -10,7 +10,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("s")
-  p.expect(re.compile('number of turns', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   output1 = p.before
   p.close()
 
@@ -19,7 +19,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("s")
-  p.expect(re.compile('number of turns', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   output2 = p.before
   p.close()
 

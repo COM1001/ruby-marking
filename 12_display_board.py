@@ -28,7 +28,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(re.compile('number of turns', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
 
   output = p.before
   ansi_escape = re.compile(r'\x1b[^m]*m \x1b\[0m')

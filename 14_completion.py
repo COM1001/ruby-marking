@@ -55,6 +55,6 @@ try:
   print("[+] Completion calculation is working")
 
 except:
-  print("[-] Main menu options do not work correctly")
+  print("[-] Failed to check for completion")
 
 #fout.close()

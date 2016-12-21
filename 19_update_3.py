@@ -39,7 +39,7 @@ p.sendline()
 try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   colours = ['r', 'g', 'b', 'y', 'c', 'm']
   current = 1
   i = 1

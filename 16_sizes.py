@@ -13,15 +13,15 @@ p.logfile = fout
 p.setecho(True)
 p.sendline()
 try:
-  p.expect(re.compile('main menu', re.IGNORECASE))
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("c")
-  p.expect(re.compile('width', re.IGNORECASE))
+  p.expect(re.compile('width', re.IGNORECASE), timeout=1)
   p.sendline("5")
-  p.expect(re.compile('height', re.IGNORECASE))
+  p.expect(re.compile('height', re.IGNORECASE), timeout=1)
   p.sendline("5")
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("s")
-  p.expect(re.compile('number of turns', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   exp = ""
   for i in range(5):
     for i in range(5):
