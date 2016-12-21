@@ -5,7 +5,7 @@ SCRIPT=$REPO/floodit.rb
 
 
 function ensure_splash {
-    gem install console_splash
+    gem install console_splash > /dev/null 2>&1
 }
 
 if [ ! -e $REPO/Gemfile ]; then
