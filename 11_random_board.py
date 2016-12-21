@@ -8,18 +8,18 @@ try:
   command = "ruby %s/floodit.rb" % sys.argv[1]
   p = pexpect.spawn(command)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
   output1 = p.before
   p.close()
 
   command = "ruby %s/floodit.rb" % sys.argv[1]
   p = pexpect.spawn(command)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
   output2 = p.before
   p.close()
 

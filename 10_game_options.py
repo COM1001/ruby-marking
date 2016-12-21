@@ -39,14 +39,14 @@ p.sendline()
 try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
   colours = ['r', 'g', 'b', 'y', 'c', 'm']
   for c in colours:
     p.sendline(c)
-    p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+    p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
     
   p.sendline("q")
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   print("[+] In-game options work correctly")
   sys.exit(0)
 except SystemExit as e:

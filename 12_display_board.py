@@ -42,7 +42,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
 
   output = p.before
 

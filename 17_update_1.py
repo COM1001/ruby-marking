@@ -34,14 +34,14 @@ p.sendline()
 try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
 
   p.sendline("r")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   p.sendline("b")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   print("[+] Game 1 played correctly")
 except:
   print("[-] Game 1 not played correctly")

@@ -26,9 +26,9 @@ try:
   #p.logfile = fout
   p.setecho(True)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
 
   regex = re.compile('.*turns:', re.IGNORECASE)
   x = int(re.sub("[^0-9]", "", re.sub(regex, "", p.after)))
@@ -36,13 +36,13 @@ try:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
   p.sendline("r")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   x = int(re.sub(regex, "", p.after))
   if x != 1:
       print("[-] Score calculation does not increment turns")
       sys.exit(1)
   p.sendline("b")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   x = int(re.sub(regex, "", p.after))
   if x != 2:
       print("[-] Score calculation does not increment turns properly")

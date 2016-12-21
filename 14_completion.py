@@ -32,7 +32,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=2)
 
   regex = re.compile('.*completion:', re.IGNORECASE)
   x = float(re.sub(regex, "", p.after).replace("%", ""))
@@ -40,13 +40,13 @@ try:
     print("[-] Completion calculation does not work")
     sys.exit(1)
   p.sendline("r")
-  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
   x = float(re.sub(regex, "", p.after).replace("%", ""))
   if x != 50.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
   p.sendline("b")
-  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
   x = float(re.sub(regex, "", p.after).replace("%", ""))
   if x != 100.0:
     print("[-] Completion calculation does not work")

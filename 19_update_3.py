@@ -39,7 +39,7 @@ p.sendline()
 try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=2)
   colours = ['r', 'g', 'b', 'y', 'c', 'm']
   current = 1
   i = 1
@@ -48,11 +48,11 @@ try:
     col = i % 14
     p.sendline(colours[current])
     current = (current + 1) % len(colours)
-    p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=1)
+    p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
     i += 1
     
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   print("[+] Game 3 played correctly")
 except:
   print("[-] Game 3 not played correctly")
