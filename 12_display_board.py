@@ -4,7 +4,6 @@ import pexpect
 import re
 import sys
 from colorama import Back, Style
-import colorize
 
 workfile = "/tmp/floodit_tmp.rb"
 script = open("%s/floodit.rb" % sys.argv[1], 'r')
@@ -37,7 +36,7 @@ try:
 
  
   str = get_colorama_str()
-  output = output.replace('\r\n', '').replace('\n', '')
+  output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
 
   if str in output:
     print("[+] Correct display of board")
@@ -47,7 +46,7 @@ try:
     if str in output:
       print("[+] Correct display of board")
       sys.exit(0)
-    else
+    else:
       print("[-] Board is not displayed correctly")
       sys.exit(1)
 
@@ -66,16 +65,5 @@ def get_colorama_str():
   for i in range(8):
     for i in range(14):
       str += Back.RED + "  " + Style.RESET_ALL
-
-  return str
-    
-def get_colorize_str():
-  str = "  ".colorize(:background +. :green)
-  str += "  ".colorize(:background +. :blue)
-  for i in range(12):
-    str += "  ".colorize(:background +. :red)
-  for i in range(8):
-    for i in range(14):
-      str += "  ".colorize(:background +. :red)
 
   return str
