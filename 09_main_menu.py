@@ -6,7 +6,7 @@ import sys
 from colorama import Back, Style
 
 
-command = "ruby -X %s %s/floodit.rb" % (sys.argv[1], sys.argv[1])
+command = "ruby %s/floodit.rb" % (sys.argv[1])
 p = pexpect.spawn(command)
 fout = open('/tmp/floodit.log','wb')
 p.logfile = fout
