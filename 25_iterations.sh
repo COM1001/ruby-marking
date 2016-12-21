@@ -2,14 +2,16 @@
 
 REPO=$1
 
+
+
 # Bad: for
-if grep -Eq '\bfor\b' $REPO/floodit.rb; then
+if cat $REPO/floodit.rb | sed -e 's/#.*$//g'  | grep -Eq '\bfor\b'; then
     echo "[-] Use of standard for loops found"
     exit 1
 fi
 
 # Good: .each
-if grep -Eq '\.each\b' $REPO/floodit.rb; then
+if cat $REPO/floodit.rb | sed -e 's/#.*$//g' | grep -Eq '\.each\b'; then
     echo "[+] Found .each iteration"
     exit 0
 fi
