@@ -23,35 +23,38 @@ of.write(script.read())
 script.close()
 of.close()
 
+try:
+  command = "ruby %s" % workfile
+  p = pexpect.spawn(command)
+  #fout = open('/tmp/floodit.log','wb')
+  #p.logfile = fout
+  p.setecho(True)
+  p.sendline()
+  p.expect(re.compile('main menu', re.IGNORECASE))
+  p.sendline("s")
+  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=1)
 
-command = "ruby %s" % workfile
-p = pexpect.spawn(command)
-#fout = open('/tmp/floodit.log','wb')
-#p.logfile = fout
-p.setecho(True)
-p.sendline()
-p.expect(re.compile('main menu', re.IGNORECASE))
-p.sendline("s")
-p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=1)
-
-regex = re.compile('.*completion:', re.IGNORECASE)
-x = float(re.sub(regex, "", p.after).replace("%", ""))
-if x >= 1.0:
+  regex = re.compile('.*completion:', re.IGNORECASE)
+  x = float(re.sub(regex, "", p.after).replace("%", ""))
+  if x >= 1.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
-p.sendline("r")
-p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
-x = float(re.sub(regex, "", p.after).replace("%", ""))
-if x != 50.0:
+  p.sendline("r")
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
+  x = float(re.sub(regex, "", p.after).replace("%", ""))
+  if x != 50.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
-p.sendline("b")
-p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
-x = float(re.sub(regex, "", p.after).replace("%", ""))
-if x != 100.0:
+  p.sendline("b")
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=1)
+  x = float(re.sub(regex, "", p.after).replace("%", ""))
+  if x != 100.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
 
-print("[+] Completion calculation is working")
+  print("[+] Completion calculation is working")
+
+except:
+  print("[-] Main menu options do not work correctly")
 
 #fout.close()
