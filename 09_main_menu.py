@@ -6,7 +6,7 @@ import sys
 from colorama import Back, Style
 
 
-command = "ruby %s/floodit.rb" % sys.argv[1]
+command = "ruby -X %s %s/floodit.rb" % (sys.argv[1], sys.argv[1])
 p = pexpect.spawn(command)
 fout = open('/tmp/floodit.log','wb')
 p.logfile = fout
@@ -22,9 +22,9 @@ try:
 
   # Change size
   p.sendline("c")
-  p.expect(re.compile('width', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   p.sendline("5")
-  p.expect(re.compile('height', re.IGNORECASE), timeout=1)
+  p.expect(pexpect.TIMEOUT, timeout=1)
   p.sendline("5")
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
 

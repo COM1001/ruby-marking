@@ -2,6 +2,12 @@
 
 REPO=$1
 
+gem list | grep -q bundler
+
+if [ $? -ne 1 ]; then
+    gem install bundler > /dev/null 2>&1
+fi
+
 if [ ! -e $REPO/Gemfile ]; then
   echo "[-] Gemfile does not exist."
   exit 1
@@ -11,7 +17,7 @@ fi
 if [ ! -e $REPO/Gemfile.lock ]; then
   echo "[-] Gemfile.lock does not exist."
   # Make sure bundle is installed anyway
-  bundle install
+  bundle install > /dev/null 2>&1
   exit 1
 fi
 
