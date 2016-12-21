@@ -3,13 +3,20 @@
 REPO=$1
 SCRIPT=$REPO/floodit.rb
 
+
+function ensure_splash {
+    gem install console_splash
+}
+
 if [ ! -e $REPO/Gemfile ]; then
     echo "[-] Gemfile does not exist, can't check for splash gem."
+    ensure_splash
     exit 1
 fi
 
 if [ ! -e $REPO/Gemfile.lock ]; then
     echo "[-] Gemfile.lock does not exist, can't check for splash gem."
+    ensure_splash
     exit 1
 fi
 
@@ -18,8 +25,9 @@ cd $REPO
 bundle list | grep -q console_splash
 
 if [ $? -ne 0 ]; then
-  echo "[-] Gem console_splash is not bundled"
-  exit 1					      
+    echo "[-] Gem console_splash is not bundled"
+    ensure_splash
+    exit 1					      
 fi
 
 workfile="/tmp/floodit_tmp.rb"

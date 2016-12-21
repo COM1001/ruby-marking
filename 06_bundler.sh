@@ -10,6 +10,8 @@ fi
 # This might not work
 if [ ! -e $REPO/Gemfile.lock ]; then
   echo "[-] Gemfile.lock does not exist."
+  # Make sure bundle is installed anyway
+  bundle install
   exit 1
 fi
 
@@ -20,3 +22,6 @@ if [ $(bundle list | wc -l) -lt 2 ]; then
 fi
 
 echo "[+] Bundler set up correctly"
+
+# Make sure bundle is installed anyway
+bundle install
