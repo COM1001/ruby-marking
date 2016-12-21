@@ -42,6 +42,8 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
 
   print("[+] Detected when game is won correctly")
+except SystemExit as e:
+  raise
 except:
   print("[-] Did not detect when game is won correctly")
   sys.exit(1)

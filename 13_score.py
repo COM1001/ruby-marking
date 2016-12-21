@@ -50,6 +50,8 @@ try:
 
   print("[+] Score calculation works properly")
   sys.exit(0)
+except SystemExit as e:
+  raise
 except:
   print("[-] Could not check score calculation")
   sys.exit(1)

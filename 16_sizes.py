@@ -43,6 +43,8 @@ try:
     print("[-] Setting size did not work correctly")
     sys.exit(1)
     
+except SystemExit as e:
+  raise
 except:
   print("[-] Setting size did not work correctly")
   sys.exit(1)

@@ -29,6 +29,8 @@ try:
   else:
     print("[+] Board initialised randomly")
     sys.exit(0)
+except SystemExit as e:
+  raise
 except:
     print("[-] Could not check board initialisation")
     sys.exit(1)

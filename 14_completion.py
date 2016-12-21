@@ -54,6 +54,8 @@ try:
 
   print("[+] Completion calculation is working")
 
+except SystemExit as e:
+  raise
 except:
   print("[-] Failed to check for completion")
   sys.exit(1)

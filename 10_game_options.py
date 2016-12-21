@@ -49,6 +49,8 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   print("[+] In-game options work correctly")
   sys.exit(0)
+except SystemExit as e:
+  raise
 except:
   print("[-] In-game options do not work correctly")
   sys.exit(1)

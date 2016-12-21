@@ -59,6 +59,8 @@ try:
     print("[-] Board is not displayed correctly")
     sys.exit(1)
 
+except SystemExit as e:
+  raise
 except:
   print("[-] Could not check board display")
   sys.exit(1)

@@ -33,6 +33,8 @@ try:
   p.expect(pexpect.EOF)
   print("[+] All menu options work correctly")
   sys.exit(0)
+except SystemExit as e:
+  raise
 except:
   print("[-] Main menu options do not work correctly")
   sys.exit(1)
