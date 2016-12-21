@@ -8,9 +8,9 @@ try:
   command = "ruby %s/floodit.rb" % sys.argv[1]
   p = pexpect.spawn(command)
   p.sendline()
-  p.expect("Main menu", timeout=1)
+  p.expect(re.compile('main menu', re.IGNORECASE), timeout=1)
   p.sendline("s")
-  p.expect("Number of turns", timeout=1)
+  p.expect(re.compile('number of turns', re.IGNORECASE), timeout=1)
   output1 = p.before
   p.close()
 
