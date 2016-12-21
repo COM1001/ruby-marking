@@ -4,7 +4,7 @@ REPO=$1
 
 gem list | grep -q bundler
 
-if [ $? -ne 1 ]; then
+if [ $? -ne 0 ]; then
     gem install bundler > /dev/null 2>&1
 fi
 
