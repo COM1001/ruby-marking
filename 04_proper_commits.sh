@@ -29,4 +29,4 @@ if [ "$SUBSTANTIAL_COMMITS" -lt 5 ]; then
   exit 1
 fi
 
-echo "[+] Found $COMMITS commits."
+echo "[+] Found $SUBSTANTIAL_COMMITS non-trivial commits."

@@ -24,4 +24,4 @@ fi
 echo "[+] Bundler set up correctly"
 
 # Make sure bundle is installed anyway
-bundle install
+bundle install > /dev/null 2>&1
