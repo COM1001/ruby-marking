@@ -41,8 +41,10 @@ try:
     print("[+] Setting size worked correctly")
   else:
     print("[-] Setting size did not work correctly")
-
+    sys.exit(1)
+    
 except:
   print("[-] Setting size did not work correctly")
-    
+  sys.exit(1)
+  
 #fout.close()

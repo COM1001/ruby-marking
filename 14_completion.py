@@ -56,5 +56,5 @@ try:
 
 except:
   print("[-] Failed to check for completion")
-
+  sys.exit(1)
 #fout.close()

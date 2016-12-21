@@ -4,6 +4,7 @@ import pexpect
 import re
 import sys
 from colorama import Back, Style
+import colorize
 
 workfile = "/tmp/floodit_tmp.rb"
 script = open("%s/floodit.rb" % sys.argv[1], 'r')
@@ -22,8 +23,8 @@ of.close()
 try:
   command = "ruby %s" % workfile
   p = pexpect.spawn(command)
-  #fout = open('/tmp/floodit.log','wb')
-  #p.logfile = fout
+  fout = open('/tmp/floodit.log','wb')
+  p.logfile = fout
   p.setecho(True)
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE))
@@ -31,31 +32,50 @@ try:
   p.expect(pexpect.TIMEOUT, timeout=1)
 
   output = p.before
-  ansi_escape = re.compile(r'\x1b[^m]*m \x1b\[0m')
-  output = ansi_escape.sub('G', output)
 
   p.close()
 
-  str = Back.GREEN + "  " + Style.RESET_ALL
-  str = Back.BLUE + "  " + Style.RESET_ALL
-  for i in range(12):
-    str += Back.RED + "  " + Style.RESET_ALL
-  str += "\n"
-  for i in range(8):
-    for i in range(14):
-      str += Back.RED + "  " + Style.RESET_ALL
-    str += "\n"
-
-  str    = str.replace('\r\n', '').replace('\n', '')
+ 
+  str = get_colorama_str()
   output = output.replace('\r\n', '').replace('\n', '')
-
 
   if str in output:
     print("[+] Correct display of board")
+    sys.exit(0)
   else:
-    print("[-] Board is not displayed correctly")
+    str = get_colorize_str()
+    if str in output:
+      print("[+] Correct display of board")
+      sys.exit(0)
+    else
+      print("[-] Board is not displayed correctly")
+      sys.exit(1)
 
 except:
   print("[-] Could not check board display")
+  sys.exit(1)
 
-#fout.close()
+fout.close()
+
+
+def get_colorama_str():
+  str = Back.GREEN + "  " + Style.RESET_ALL
+  str += Back.BLUE + "  " + Style.RESET_ALL
+  for i in range(12):
+    str += Back.RED + "  " + Style.RESET_ALL
+  for i in range(8):
+    for i in range(14):
+      str += Back.RED + "  " + Style.RESET_ALL
+
+  return str
+    
+def get_colorize_str():
+  str = "  ".colorize(:background +. :green)
+  str += "  ".colorize(:background +. :blue)
+  for i in range(12):
+    str += "  ".colorize(:background +. :red)
+  for i in range(8):
+    for i in range(14):
+      str += "  ".colorize(:background +. :red)
+
+  return str

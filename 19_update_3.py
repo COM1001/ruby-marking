@@ -56,6 +56,7 @@ try:
   print("[+] Game 3 played correctly")
 except:
   print("[-] Game 3 not played correctly")
-
+  sys.exit(1)
+  
 fout.close()
 

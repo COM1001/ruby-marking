@@ -32,8 +32,10 @@ try:
   p.sendline("q")
   p.expect(pexpect.EOF)
   print("[+] All menu options work correctly")
+  sys.exit(0)
 except:
   print("[-] Main menu options do not work correctly")
-
+  sys.exit(1)
+  
 fout.close()
 

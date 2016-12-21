@@ -49,5 +49,7 @@ try:
       sys.exit(1)
 
   print("[+] Score calculation works properly")
+  sys.exit(0)
 except:
   print("[-] Could not check score calculation")
+  sys.exit(1)

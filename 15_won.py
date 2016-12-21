@@ -44,5 +44,6 @@ try:
   print("[+] Detected when game is won correctly")
 except:
   print("[-] Did not detect when game is won correctly")
-    
+  sys.exit(1)
+  
 #fout.close()

@@ -25,7 +25,10 @@ try:
 
   if output1 == output2:
     print("[-] Board initialised with fixed values")
+    sys.exit(1)
   else:
     print("[+] Board initialised randomly")
+    sys.exit(0)
 except:
     print("[-] Could not check board initialisation")
+    sys.exit(1)
