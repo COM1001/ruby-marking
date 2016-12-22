@@ -16,20 +16,21 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("c")
   p.expect(pexpect.TIMEOUT, timeout=2)
-  p.sendline("5")
+  p.sendline("10")
   p.expect(pexpect.TIMEOUT, timeout=2)
-  p.sendline("5")
+  p.sendline("10")
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   exp = ""
-  for i in range(5):
-    for i in range(5):
+  for i in range(10):
+    for j in range(10):
       exp += Back.RED + "  " + Style.RESET_ALL
+    exp += "+"
 
   ansi_escape = re.compile(r'\x1b[^m]*m')
   output = p.before
-  output = output.replace('\r\n', '+').replace('\n', '+').replace('0;39;', '')
+  output = output.replace('\r\n', '+').replace('\n', '+')
   output = ansi_escape.sub('', output)
   exp    = ansi_escape.sub('', exp)
 
