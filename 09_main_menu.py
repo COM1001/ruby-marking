@@ -16,8 +16,15 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   # Main menu
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
-  p.sendline("q")
+  p.expect([re.compile('.*turns.*', re.IGNORECASE), pexpect.TIMEOUT], timeout=2)
+  p.close()
+except:
+  print("[-] Main menu option to start game does not work correctly")
+  sys.exit(1)
+
+try:
+  p = pexpect.spawn(command)
+  p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
 
   # Change size
@@ -27,7 +34,11 @@ try:
   p.expect(pexpect.TIMEOUT, timeout=2)
   p.sendline("5")
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
+except:
+  print("[-] Main menu option to change size does not work correctly")
+  sys.exit(1)
 
+try:
   # Quiz
   p.sendline("q")
   p.expect(pexpect.EOF)
@@ -36,7 +47,7 @@ try:
 except SystemExit as e:
   raise
 except:
-  print("[-] Main menu options do not work correctly")
+  print("[-] Main menu option to quit does not work correctly")
   sys.exit(1)
   
 fout.close()
