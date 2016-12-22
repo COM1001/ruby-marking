@@ -53,9 +53,9 @@ try:
     
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
-  print("[+] Game 3 played correctly")
+  print("[+] Board updating test scenario 3 played correctly")
 except:
-  print("[-] Game 3 not played correctly")
+  print("[-] Board updating test scenario 3 not played correctly")
   sys.exit(1)
   
 fout.close()

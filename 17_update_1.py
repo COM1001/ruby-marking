@@ -42,9 +42,9 @@ try:
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
-  print("[+] Game 1 played correctly")
+  print("[+] Board updating test scenario 1 worked correctly")
 except:
-  print("[-] Game 1 not played correctly")
+  print("[-] Board updating test scenario 1 not played correctly")
   sys.exit(1)
 
 
