@@ -1,6 +1,8 @@
 #!/bin/bash
 
 REPO=$1
+GEM_HOME=/home/codio/.gems
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"
 
 OUTPUT=$(rubocop --only ConstantName,VariableName,MethodName -D $REPO/floodit.rb)
 
