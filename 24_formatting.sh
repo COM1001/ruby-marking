@@ -7,7 +7,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/c
 
 gem install rubocop > /dev/null 2>&1
 
-OUTPUT=$(rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines,Style/SpaceInsideBrackets,SpaceInsideBrackets,Tab -D $REPO/floodit.rb)
+OUTPUT=$(rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines,Style/SpaceInsideBrackets,SpaceInsideBrackets,Tab,GlobalVars -D $REPO/floodit.rb)
 
 if [ $? -eq 0 ]; then
     echo "[+] Source code is formatted according to style guide"
