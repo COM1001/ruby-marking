@@ -56,16 +56,20 @@ if x != 50.0:
 
 try:
   p.sendline("b")
-  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
+  value = p.expect([re.compile('completion.*', re.IGNORECASE), re.compile('.*won.*', re.IGNORECASE)], timeout=2)
+
+  if value == 0:
+      x = float(re.sub(r'[^0-9\.]', "", p.after))
+      if x != 100.0:
+      print("[-] Completion calculation does not work")
+      sys.exit(1)
+  print("[+] Completion calculation is working")
+  
+except SystemExit as e:
+  raise
 except:
-  print("[-] Failed to check for completion - no completion displayed")
+  print("[-] Failed to check for completion - no completion displayed at end")
   sys.exit(1)
 
-x = float(re.sub(r'[^0-9\.]', "", p.after))
-if x != 100.0:
-    print("[-] Completion calculation does not work")
-    sys.exit(1)
-
-print("[+] Completion calculation is working")
 
 #fout.close()
