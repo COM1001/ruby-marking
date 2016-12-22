@@ -2,8 +2,9 @@
 
 REPO=$1
 SCRIPT=$REPO/floodit.rb
-GEM_HOME=/home/codio/.gems
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
+export GEM_HOME=/home/codio/.gems
+export GEM_PATH=/home/codio/.gems:/home/codio/.gem/ruby/2.2.0:/var/lib/gems/2.2.0:/usr/share/rubygems-integration/2.2.0:/usr/share/rubygems-integration/all
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
 
 if [ ! -e $REPO/Gemfile ]; then
   echo "[-] Gemfile does not exist, can't check for gem to colourise."
