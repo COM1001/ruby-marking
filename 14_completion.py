@@ -37,23 +37,32 @@ except:
   print("[-] Failed to check for completion - no completion displayed initially")
   sys.exit(1)
 
-x = float(re.sub(r'[^0-9\.]', "", p.after))
-if x >= 1.0:
+try:
+  x = float(re.sub(r'[^0-9\.]', "", p.after))
+  if x >= 1.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
-
+except:
+    print("[-] Completion calculation does not work")
+    sys.exit(1)
+  
+    
 try:
   p.sendline("r")
   p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
 except:
   print("[-] Failed to check for completion - no completion displayed after one round")
   sys.exit(1)
-  
-x = float(re.sub(r'[^0-9\.]', "", p.after))
-if x != 50.0:
+
+try:
+  x = float(re.sub(r'[^0-9\.]', "", p.after))
+  if x != 50.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
-
+except:
+    print("[-] Completion calculation does not work")
+    sys.exit(1)
+  
 try:
   p.sendline("b")
   value = p.expect([re.compile('completion.*', re.IGNORECASE), re.compile('.*won.*', re.IGNORECASE)], timeout=2)

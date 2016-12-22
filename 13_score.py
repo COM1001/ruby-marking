@@ -33,8 +33,12 @@ except:
   print("[-] Could not check score calculation: No score displayed after game start")
   sys.exit(1)
 
-x = int(re.sub(r'[^0-9]', "", p.after))
-if x != 0:
+try:
+  x = int(re.sub(r'[^0-9]', "", p.after))
+  if x != 0:
+      print("[-] Score calculation does not start off with 0 turns")
+      sys.exit(1)
+except:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
 
@@ -45,8 +49,12 @@ except:
   print("[-] Could not check score calculation: No score displayed after one round")
   sys.exit(1)
 
-x = int(re.sub(r'[^0-9]', "", p.after))
-if x != 1:
+try:
+  x = int(re.sub(r'[^0-9]', "", p.after))
+  if x != 1:
+      print("[-] Score calculation does not increment turns")
+      sys.exit(1)
+except:
       print("[-] Score calculation does not increment turns")
       sys.exit(1)
 
