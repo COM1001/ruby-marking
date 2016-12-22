@@ -4,6 +4,8 @@ REPO=$1
 GEM_HOME=/home/codio/.gems
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
 
+gem install rubocop > /dev/null 2>&1
+
 OUTPUT=$(rubocop --only ConstantName,VariableName,MethodName -D $REPO/floodit.rb)
 
 if [ $? -eq 0 ]; then
