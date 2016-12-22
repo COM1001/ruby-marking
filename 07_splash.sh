@@ -37,6 +37,8 @@ echo "require 'console_splash'" >> $workfile
 echo "ConsoleSplash.expects(:splash).returns(exit(27))" >> $workfile
 cat floodit.rb >> $workfile
 
+export GEM_HOME=/home/codio/.gems
+export GEM_PATH=/home/codio/.gems
 ruby $workfile
 
 if [ $? -eq 27 ]; then

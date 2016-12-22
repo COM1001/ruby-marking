@@ -25,7 +25,7 @@ of.close()
 
 
 command = "ruby %s" % workfile
-p = pexpect.spawn(command)
+p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems"})
 #fout = open('/tmp/floodit.log','wb')
 #p.logfile = fout
 p.setecho(True)

@@ -6,7 +6,7 @@ import sys
 
 try:
   command = "ruby %s/floodit.rb" % sys.argv[1]
-  p = pexpect.spawn(command)
+  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems"})
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
@@ -15,7 +15,7 @@ try:
   p.close()
 
   command = "ruby %s/floodit.rb" % sys.argv[1]
-  p = pexpect.spawn(command)
+  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems"})
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
