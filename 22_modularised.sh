@@ -2,6 +2,7 @@
 
 REPO=$1
 GEM_HOME=/home/codio/.gems
+GEM_PATH=/home/codio/.gems:/home/codio/.gem/ruby/2.2.0:/var/lib/gems/2.2.0:/usr/share/rubygems-integration/2.2.0:/usr/share/rubygems-integration/all
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
 
 RUBOCOP_FILE=/tmp/rubocop_tmp.yml
