@@ -33,30 +33,39 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
   p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=2)
+except:
+  print("[-] Failed to check for completion - no completion displayed initially")
+  sys.exit(1)
 
-  regex = re.compile('.*completion:', re.IGNORECASE)
-  x = float(re.sub(regex, "", p.after).replace("%", ""))
-  if x >= 1.0:
+x = float(re.sub(r'[^0-9\.]', "", p.after))
+if x >= 1.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
+
+try:
   p.sendline("r")
   p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
-  x = float(re.sub(regex, "", p.after).replace("%", ""))
-  if x != 50.0:
+except:
+  print("[-] Failed to check for completion - no completion displayed after one round")
+  sys.exit(1)
+  
+x = float(re.sub(r'[^0-9\.]', "", p.after))
+if x != 50.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
+
+try:
   p.sendline("b")
   p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
-  x = float(re.sub(regex, "", p.after).replace("%", ""))
-  if x != 100.0:
+except:
+  print("[-] Failed to check for completion - no completion displayed")
+  sys.exit(1)
+
+x = float(re.sub(r'[^0-9\.]', "", p.after))
+if x != 100.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
 
-  print("[+] Completion calculation is working")
+print("[+] Completion calculation is working")
 
-except SystemExit as e:
-  raise
-except:
-  print("[-] Failed to check for completion")
-  sys.exit(1)
 #fout.close()

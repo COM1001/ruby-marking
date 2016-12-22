@@ -33,8 +33,7 @@ except:
   print("[-] Could not check score calculation: No score displayed after game start")
   sys.exit(1)
 
-regex = re.compile('.*turns:', re.IGNORECASE)
-x = int(re.sub("[^0-9]", "", re.sub(regex, "", p.after)))
+x = int(re.sub(r'[^0-9]', "", p.after))
 if x != 0:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
@@ -46,7 +45,7 @@ except:
   print("[-] Could not check score calculation: No score displayed after one round")
   sys.exit(1)
 
-x = int(re.sub(regex, "", p.after))
+x = int(re.sub(r'[^0-9]', "", p.after))
 if x != 1:
       print("[-] Score calculation does not increment turns")
       sys.exit(1)
@@ -58,7 +57,7 @@ except:
   print("[-] Could not check score calculation: No score displayed after game play")
   sys.exit(1)
 
-x = int(re.sub(regex, "", p.after))
+x = int(re.sub(r'[^0-9]', "", p.after))
 if x != 2:
       print("[-] Score calculation does not increment turns properly")
       sys.exit(1)
