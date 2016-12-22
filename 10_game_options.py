@@ -40,19 +40,25 @@ try:
   p.expect(re.compile('main menu', re.IGNORECASE))
   p.sendline("s")
   p.expect(pexpect.TIMEOUT, timeout=2)
-  colours = ['r', 'g', 'b', 'y', 'c', 'm']
-  for c in colours:
-    p.sendline(c)
-    p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+except:
+  print("[-] Game did not start, so could not check in-game options")
+  sys.exit(1)
+
+colours = ['r', 'g', 'b', 'y', 'c', 'm']
+for c in colours:
+  p.sendline(c)
+  try:
+      p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+  except:
+      print("[-] In-game options do not work correctly: Colour %s not accepted % c")
+      sys.exit(1)
     
+try:
   p.sendline("q")
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   print("[+] In-game options work correctly")
-  sys.exit(0)
-except SystemExit as e:
-  raise
 except:
-  print("[-] In-game options do not work correctly")
+  print("[-] In-game options do not work correctly: Could not quit game")
   sys.exit(1)
   
 fout.close()
