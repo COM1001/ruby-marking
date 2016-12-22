@@ -2,7 +2,7 @@
 
 REPO=$1
 GEM_HOME=/home/codio/.gems
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
 
 gem list | grep -q bundler
 

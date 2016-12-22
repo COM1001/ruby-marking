@@ -3,7 +3,7 @@
 REPO=$1
 SCRIPT=$REPO/floodit.rb
 GEM_HOME=/home/codio/.gems
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin
 
 
 function ensure_splash {
