@@ -61,8 +61,8 @@ try:
   if value == 0:
       x = float(re.sub(r'[^0-9\.]', "", p.after))
       if x != 100.0:
-      print("[-] Completion calculation does not work")
-      sys.exit(1)
+        print("[-] Completion calculation does not work")
+        sys.exit(1)
   print("[+] Completion calculation is working")
   
 except SystemExit as e:
