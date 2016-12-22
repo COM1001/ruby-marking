@@ -28,30 +28,39 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+except:
+  print("[-] Could not check score calculation: No score displayed after game start")
+  sys.exit(1)
 
-  regex = re.compile('.*turns:', re.IGNORECASE)
-  x = int(re.sub("[^0-9]", "", re.sub(regex, "", p.after)))
-  if x != 0:
+regex = re.compile('.*turns:', re.IGNORECASE)
+x = int(re.sub("[^0-9]", "", re.sub(regex, "", p.after)))
+if x != 0:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
+
+try:
   p.sendline("r")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
-  x = int(re.sub(regex, "", p.after))
-  if x != 1:
+except:
+  print("[-] Could not check score calculation: No score displayed after one round")
+  sys.exit(1)
+
+x = int(re.sub(regex, "", p.after))
+if x != 1:
       print("[-] Score calculation does not increment turns")
       sys.exit(1)
+
+try:
   p.sendline("b")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
-  x = int(re.sub(regex, "", p.after))
-  if x != 2:
+except:
+  print("[-] Could not check score calculation: No score displayed after game play")
+  sys.exit(1)
+
+x = int(re.sub(regex, "", p.after))
+if x != 2:
       print("[-] Score calculation does not increment turns properly")
       sys.exit(1)
 
-  print("[+] Score calculation works properly")
-  sys.exit(0)
-except SystemExit as e:
-  raise
-except:
-  print("[-] Could not check score calculation")
-  sys.exit(1)
+print("[+] Score calculation works properly")
