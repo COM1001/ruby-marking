@@ -12,7 +12,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
   output1 = p.before
   p.close()
 
@@ -22,7 +22,7 @@ try:
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
   output2 = p.before
   p.close()
 
