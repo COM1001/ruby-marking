@@ -22,8 +22,8 @@ of.close()
 try:
   command = "ruby %s/floodit.rb" % sys.argv[1]
   p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
-  #fout = open('/tmp/floodit.log','wb')
-  #p.logfile = fout
+  fout = open('home/codio/workspace/autograde_logs/13_score.log','wb')
+  p.logfile = fout
   p.setecho(True)
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
@@ -71,3 +71,4 @@ if x != 2:
       sys.exit(1)
 
 print("[+] Score calculation works properly")
+fout.close()

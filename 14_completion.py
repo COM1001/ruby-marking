@@ -26,8 +26,8 @@ of.close()
 try:
   command = "ruby %s" % workfile
   p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
-  #fout = open('/tmp/floodit.log','wb')
-  #p.logfile = fout
+  fout = open('home/codio/workspace/autograde_logs/14_completion.log','wb')
+  p.logfile = fout
   p.setecho(True)
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE))
@@ -81,4 +81,4 @@ except:
   sys.exit(1)
 
 
-#fout.close()
+fout.close()

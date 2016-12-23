@@ -24,6 +24,7 @@ except:
 
 try:
   p = pexpect.spawn(command)
+  p.logfile = fout
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
 
@@ -51,4 +52,3 @@ except:
   sys.exit(1)
   
 fout.close()
-
