@@ -38,7 +38,7 @@ try:
   p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems",
                                   "GEM_PATH": "/home/codio/.gems",
                                   "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
-  fout = open('home/codio/workspace/autograde_logs/12_display_board.log','wb')
+  fout = open('home/codio/workspace/autograding_logs/12_display_board.log','wb')
   p.logfile = fout
   p.setecho(True)
   p.sendline()
