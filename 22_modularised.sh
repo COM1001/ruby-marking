@@ -18,8 +18,8 @@ if [ $? -eq 0 ]; then
     rm $RUBOCOP_FILE
     exit 0
 else
-    echo "[-] Not well modularised code. Here is the output of Rubocop:"
-    rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb
+    echo "[-] Not well modularised code. Check the Rubocop output in /home/codio/workspace/autograding_logs/22_modularised.log"
+    rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb > /home/codio/workspace/autograding_logs/22_modularised.log
     rm $RUBOCOP_FILE
     exit 1
 fi

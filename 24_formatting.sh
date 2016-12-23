@@ -13,8 +13,8 @@ if [ $? -eq 0 ]; then
     echo "[+] Source code is formatted according to style guide"
     exit 0
 else
-    echo "[-] Source code is not formatted according to style guide. Here is the output of Rubocop:"
-    rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines -D $REPO/floodit.rb
+    echo "[-] Source code is not formatted according to style guide. Check Rubocop output in /home/codio/workspace/autograding_logs/24_formatting.log:"
+    rubocop --only Style --except StringLiterals,ConstantName,MethodName,PredicateName,VariableName,Style/LeadingCommentSpace,Style/TrailingWhitespace,Style/EmptyLines -D $REPO/floodit.rb > /home/codio/workspace/autograding_logs/24_formatting.log
     exit 1
 fi
 
