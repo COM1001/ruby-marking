@@ -14,5 +14,11 @@ if cat $REPO/floodit.rb | sed -e 's/"[^"].*"//g' | sed -e 's/#.*$//g' | grep -Eq
     exit 0
 fi
 
+if cat $REPO/floodit.rb | sed -e 's/"[^"].*"//g' | sed -e 's/#.*$//g' | grep -Eq '\.each_with_index\b'; then
+    echo "[+] Found .each_with_index iteration"
+    exit 0
+fi
+
+
 echo "[-] Found no Ruby .each iterations"
 exit 1
