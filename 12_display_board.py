@@ -47,25 +47,24 @@ try:
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
 
   output = p.before
-
   p.close()
-
- 
-  str = get_colorama_str()
-  output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
-
-  if str in output:
-    print("[+] Correct display of board")
-    sys.exit(0)
-  else:
-    print("[-] Board is not displayed correctly")
-    sys.exit(1)
-
 except SystemExit as e:
   raise
 except:
-  print("[-] Could not check board display")
+  output = p.before
+  p.close()
+
+ 
+str = get_colorama_str()
+output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
+
+if str in output:
+  print("[+] Correct display of board")
+  sys.exit(0)
+else:
+  print("[-] Board is not displayed correctly")
   sys.exit(1)
+
 
 fout.close()
 
