@@ -9,7 +9,7 @@ RUBOCOP_FILE=/tmp/rubocop_tmp.yml
 echo "Metrics/MethodLength:" > $RUBOCOP_FILE
 echo "  Max: 30" >> $RUBOCOP_FILE
 
-gem install rubocop > /dev/null 2>&1
+gem install rubocop --conservative > /dev/null 2>&1
 
 OUTPUT=$(rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb)
 
