@@ -6,9 +6,35 @@ import sys
 from colorama import Back, Style
 
 
-command = "ruby %s/floodit.rb" % (sys.argv[1])
+def get_colorama_str():
+  str = Back.GREEN + "  " + Style.RESET_ALL
+  str += Back.BLUE + "  " + Style.RESET_ALL
+  for i in range(12):
+    str += Back.RED + "  " + Style.RESET_ALL
+  for i in range(8):
+    for i in range(14):
+      str += Back.RED + "  " + Style.RESET_ALL
+
+  return str
+
+workfile = "/tmp/floodit_tmp.rb"
+script = open("%s/floodit.rb" % sys.argv[1], 'r')
+of = open(workfile, 'w')
+
+of.write("""require 'mocha/api'
+__ar = Array.new(9) { Array.new(14, :red) }
+__ar[0][0] = :green
+__ar[0][1] = :blue
+stubs(:get_board).returns(__ar)
+""")
+of.write(script.read())
+script.close()
+of.close()
+
+command = "ruby %s" % workfile
+
 p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
-fout = open('/tmp/floodit.log','wb')
+fout = open('/home/codio/workspace/autograding_logs/09_main_menu.log','wb')
 p.logfile = fout
 p.setecho(True)
 p.sendline()
@@ -19,8 +45,12 @@ try:
   p.expect([re.compile('.*turns.*', re.IGNORECASE), pexpect.TIMEOUT], timeout=2)
   p.close()
 except:
-  print("[-] Main menu option to start game does not work correctly")
-  sys.exit(1)
+  output = p.before
+  str = get_colorama_str()
+  output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
+  if not str in output:
+    print("[-] Main menu option to start game does not work correctly")
+    sys.exit(1)
 
 try:
   p = pexpect.spawn(command)
