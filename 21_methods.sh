@@ -9,7 +9,7 @@ if [ $NUM_METHODS -lt 3 ]; then
     exit 1
 else
     echo "[+] Basic use of methods"
-    exit 1    
+    exit 0
 fi
 
 
