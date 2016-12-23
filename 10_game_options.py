@@ -50,7 +50,7 @@ for c in colours:
   try:
       p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   except:
-      print("[-] In-game options do not work correctly: Colour %s not accepted % c")
+      print("[-] In-game options do not work correctly: Colour %s not accepted" % c)
       sys.exit(1)
     
 try:
