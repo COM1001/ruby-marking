@@ -36,7 +36,7 @@ p.logfile = fout
 p.setecho(True)
 p.sendline()
 try:
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE)])
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)])
   p.sendline("s")
   p.expect(pexpect.TIMEOUT, timeout=2)
 
@@ -51,7 +51,7 @@ try:
   p.sendline("y")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   p.sendline()
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
   print("[+] Board updating test scenario 2 played correctly")
 except:
   print("[-] Board updating test scenario 2 not played correctly")
