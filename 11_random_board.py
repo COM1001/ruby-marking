@@ -10,7 +10,7 @@ try:
   fout = open('/home/codio/workspace/autograding_logs/11_random_board.log','wb')
   p.logfile = fout
   p.sendline()
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
   p.sendline("s")
   p.expect([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
   output1 = p.before
@@ -20,7 +20,7 @@ try:
   p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
   p.logfile = fout
   p.sendline()
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
   p.sendline("s")
   p.expect([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
   output2 = p.before

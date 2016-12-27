@@ -30,7 +30,7 @@ try:
   p.logfile = fout
   p.setecho(True)
   p.sendline()
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)])
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)])
   p.sendline("s")
   p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=2)
 except:
