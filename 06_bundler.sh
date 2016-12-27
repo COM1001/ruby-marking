@@ -28,6 +28,7 @@ cd $REPO
 
 if [ $(bundle list | wc -l) -lt 2 ]; then
     echo "[-] Less than 2 gems handled by bundler"
+    exit 1
 fi
 
 echo "[+] Bundler set up correctly"
