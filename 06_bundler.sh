@@ -31,7 +31,8 @@ if [ $(bundle list | wc -l) -lt 2 ]; then
     exit 1
 fi
 
-echo "[+] Bundler set up correctly"
 
 # Make sure bundle is installed anyway
 bundle install > /dev/null 2>&1
+
+echo "[+] Bundler set up correctly"
