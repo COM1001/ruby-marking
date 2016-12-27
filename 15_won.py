@@ -31,7 +31,7 @@ p.logfile = fout
 p.setecho(True)
 p.sendline()
 try:
-  p.expect(re.compile('main menu', re.IGNORECASE))
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE)])
   p.sendline("s")
   p.expect(pexpect.TIMEOUT, timeout=2)
   p.sendline("r")
@@ -39,7 +39,7 @@ try:
   p.sendline("b")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
   p.sendline()
-  p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE)], timeout=2)
 
   print("[+] Detected when game is won correctly")
 except SystemExit as e:
