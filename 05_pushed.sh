@@ -44,7 +44,7 @@ if $(echo $ORIGIN | grep -q "https://github.com/COM1001/flood-it"); then
 fi
 
 # Check 2: origin and master should be in sync
-UNPUSHED=$(git cherry | wc -l)
+UNPUSHED=$(git cherry 2>/dev/null | wc -l)
 if [ $UNPUSHED -ne 0 ]; then
   echo "[-] It appears you did not push your local changes."
   exit 1
