@@ -53,7 +53,7 @@ except:
     sys.exit(1)
 
 try:
-  p = pexpect.spawn(command)
+  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
   p.logfile = fout
   p.sendline()
   p.expect(re.compile('main menu', re.IGNORECASE), timeout=2)
