@@ -26,7 +26,7 @@ fi
 CHANGES=$(git diff --name-only floodit.rb)
 
 if [ ! -z "$CHANGES" ]; then
-  echo "[-] There are changes to hangman.rb but the file has not been staged for commit yet, so remote repo is not in sync."
+  echo "[-] There are changes to floodit.rb but the file has not been staged for commit yet, so remote repo is not in sync."
   exit 1
 fi
 
