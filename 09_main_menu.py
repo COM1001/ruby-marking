@@ -42,7 +42,7 @@ try:
   p.expect([re.compile('main menu', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   # Main menu
   p.sendline("s")
-  p.expect([re.compile('.*turns.*', re.IGNORECASE), pexpect.TIMEOUT], timeout=3)
+  p.expect([re.compile('turns', re.IGNORECASE), pexpect.TIMEOUT], timeout=3)
   p.close()
 except:
   output = p.before
