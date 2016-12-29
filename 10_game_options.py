@@ -44,7 +44,7 @@ except:
   print("[-] Game did not start, so could not check in-game options")
   sys.exit(1)
 
-colours = ['r', 'g', 'b', 'y', 'c', 'm']
+colours = ['g', 'b', 'y', 'c', 'm', 'r']
 for c in colours:
   p.sendline(c)
   try:
