@@ -39,7 +39,7 @@ except:
 
 try:
   x = float(re.sub(r'[^0-9\.]', "", p.after))
-  if x >= 1.0:
+  if x > 1.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
 except SystemExit as e:
