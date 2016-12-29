@@ -64,7 +64,12 @@ try:
   p.sendline("5")
   p.expect(pexpect.TIMEOUT, timeout=3)
   p.sendline("5")
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
+  r = p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE), pexpect.TIMEOUT], timeout=3)
+  if r == 4:
+    # Some people want to have an additional keypress here...
+    p.sendline()
+    p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
+
 except:
   print("[-] Main menu option to change size does not work correctly")
   sys.exit(1)
