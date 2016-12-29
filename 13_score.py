@@ -38,6 +38,8 @@ try:
   if x != 0:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
+except SystemExit as e:
+  raise
 except:
       print("[-] Score calculation does not start off with 0 turns")
       sys.exit(1)
@@ -45,6 +47,8 @@ except:
 try:
   p.sendline("r")
   p.expect(re.compile('turns.*', re.IGNORECASE), timeout=3)
+except SystemExit as e:
+  raise
 except:
   print("[-] Could not check score calculation: No score displayed after one round")
   sys.exit(1)
@@ -54,6 +58,8 @@ try:
   if x != 1:
       print("[-] Score calculation does not increment turns: %d" % x)
       sys.exit(1)
+except SystemExit as e:
+  raise
 except:
       print("[-] Score calculation does not increment turns: %s" % p.after)
       sys.exit(1)
