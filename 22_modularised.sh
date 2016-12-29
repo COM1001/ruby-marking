@@ -8,6 +8,12 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/c
 RUBOCOP_FILE=/tmp/rubocop_tmp.yml
 echo "Metrics/MethodLength:" > $RUBOCOP_FILE
 echo "  Max: 30" >> $RUBOCOP_FILE
+echo >> $RUBOCOP_FILE
+echo "Style/GlobalVars:" >> $RUBOCOP_FILE
+echo "  AllowedVariables:" >> $RUBOCOP_FILE
+echo "    - '\$COLOURS'" >> $RUBOCOP_FILE
+echo "    - '\$COLORS'" >> $RUBOCOP_FILE
+echo "    - '\$COLOUR_HASH'" >> $RUBOCOP_FILE
 
 gem install rubocop --conservative > /dev/null 2>&1
 
