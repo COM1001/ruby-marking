@@ -31,7 +31,6 @@ try:
     sys.exit(1)
   else:
     print("[+] Board initialised randomly")
-    sys.exit(0)
 except SystemExit as e:
   raise
 except:
