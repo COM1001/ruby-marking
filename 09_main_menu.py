@@ -49,8 +49,6 @@ except:
   str = get_colorama_str()
   output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
   if not str in output:
-    print(str)
-    print(output)
     print("[-] Main menu option to start game does not work correctly")
     sys.exit(1)
 
