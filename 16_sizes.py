@@ -22,29 +22,26 @@ try:
   p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("s")
   p.expect(re.compile('turns', re.IGNORECASE), timeout=3)
-  exp = ""
-  for i in range(10):
+  output = p.before
+except:
+  output = p.before
+
+exp = ""
+for i in range(10):
     for j in range(10):
       exp += Back.RED + "  " + Style.RESET_ALL
     exp += "+"
 
-  ansi_escape = re.compile(r'\x1b[^m]*m')
-  output = p.before
-  output = output.replace('\r\n', '+').replace('\n', '+')
-  output = ansi_escape.sub('', output)
-  exp    = ansi_escape.sub('', exp)
+ansi_escape = re.compile(r'\x1b[^m]*m')
+output = output.replace('\r\n', '+').replace('\n', '+')
+output = ansi_escape.sub('', output)
+exp    = ansi_escape.sub('', exp)
 
 
-  if exp in output:
-    print("[+] Setting size worked correctly")
-  else:
-    print("[-] Setting size did not work correctly")
-    sys.exit(1)
-    
-except SystemExit as e:
-  raise
-except:
+if exp in output:
+  print("[+] Setting size worked correctly")
+else:
   print("[-] Setting size did not work correctly")
   sys.exit(1)
-  
-#fout.close()
+    
+fout.close()
