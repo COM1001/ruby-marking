@@ -31,7 +31,7 @@ if [ $COMMENTS -gt 10 ]; then
     echo "[+] Well documented code"
     rm $SKELETON_COMMENTS
     exit 0
-else:
+else
     echo "[-] Not well documented code"
     rm $SKELETON_COMMENTS
     exit 1
