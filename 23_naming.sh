@@ -13,7 +13,7 @@ if [ $? -eq 0 ]; then
     echo "[+] Naming according to style guide"
     exit 0
 else
-    echo "[-] Naming does not confirm to style guide. Check the output of Rubocop in /home/codio/workspace/autograding_logs/23_naming.log"
+    echo "[-] Naming does not conform to style guide. Check the output of Rubocop in /home/codio/workspace/autograding_logs/23_naming.log"
     rubocop --only ConstantName,VariableName,MethodName -D $REPO/floodit.rb > /home/codio/workspace/autograding_logs/23_naming.log
     exit 1
 fi
