@@ -4,6 +4,7 @@ import pexpect
 import re
 import sys
 from colorama import Back, Style
+import time
 
 workfile = "/tmp/floodit_tmp.rb"
 script = open("%s/floodit.rb" % sys.argv[1], 'r')
@@ -32,6 +33,7 @@ try:
   p.sendline()
   p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)])
   p.sendline("s")
+  time.sleep(1) # seems this can be too quick for the number to appear...
   p.expect(re.compile('completion.*', re.IGNORECASE), timeout=3)
 except:
   print("[-] Failed to check for completion - no completion displayed initially")
@@ -51,6 +53,7 @@ except:
     
 try:
   p.sendline("r")
+  time.sleep(1) # seems this can be too quick for the number to appear...
   p.expect(re.compile('completion.*', re.IGNORECASE), timeout=3)
 except:
   print("[-] Failed to check for completion - no completion displayed after one round")
@@ -69,6 +72,7 @@ except:
   
 try:
   p.sendline("b")
+  time.sleep(1) # seems this can be too quick for the number to appear...
   value = p.expect([re.compile('completion.*', re.IGNORECASE), re.compile('.*won.*', re.IGNORECASE)], timeout=3)
 
   if value == 0:
