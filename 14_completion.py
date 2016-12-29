@@ -42,6 +42,8 @@ try:
   if x >= 1.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
+except SystemExit as e:
+  raise
 except:
     print("[-] Completion calculation does not work")
     sys.exit(1)
@@ -59,6 +61,8 @@ try:
   if x != 50.0:
     print("[-] Completion calculation does not work")
     sys.exit(1)
+except SystemExit as e:
+  raise
 except:
     print("[-] Completion calculation does not work")
     sys.exit(1)
