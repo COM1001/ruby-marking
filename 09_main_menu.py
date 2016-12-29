@@ -48,6 +48,11 @@ except:
   output = p.before
   str = get_colorama_str()
   output = output.replace('\r\n', '').replace('\n', '').replace('0;39;', '')
+  # Don't check actual contents
+  ansi_escape = re.compile(r'\x1b[^m]*m')
+  output = ansi_escape.sub('X', output)
+  str = ansi_escape.sub('X', str)
+
   if not str in output:
     print("[-] Main menu option to start game does not work correctly")
     sys.exit(1)
