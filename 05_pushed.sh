@@ -18,7 +18,7 @@ fi
 
 git diff --cached --exit-code > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "[-] There are staged changes that have not been committed."
+  echo "[-] There are staged changes that have not been committed, so remote repo is not in sync."
   exit 1
 fi
 
@@ -26,7 +26,7 @@ fi
 CHANGES=$(git diff --name-only floodit.rb)
 
 if [ ! -z "$CHANGES" ]; then
-  echo "[-] There are changes to hangman.rb but the file has not been staged for commit yet."
+  echo "[-] There are changes to hangman.rb but the file has not been staged for commit yet, so remote repo is not in sync."
   exit 1
 fi
 
@@ -34,7 +34,7 @@ fi
 ORIGIN=$(git remote get-url origin)
 
 if [ $? -ne 0 ]; then
-  echo "[-] Remote origin has not been set."
+  echo "[-] Remote origin has not been set, so remote repo is not in sync."
   exit 1
 fi
 
@@ -46,7 +46,7 @@ fi
 # Check 2: origin and master should be in sync
 UNPUSHED=$(git cherry 2>/dev/null | wc -l)
 if [ $UNPUSHED -ne 0 ]; then
-  echo "[-] It appears you did not push your local changes."
+  echo "[-] It appears you did not push your local changes, so remote repo is not in sync."
   exit 1
 fi
 
