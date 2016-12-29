@@ -17,21 +17,7 @@ def get_colorama_str():
 
   return str
 
-workfile = "/tmp/floodit_tmp.rb"
-script = open("%s/floodit.rb" % sys.argv[1], 'r')
-of = open(workfile, 'w')
-
-of.write("""require 'mocha/api'
-__ar = Array.new(9) { Array.new(14, :red) }
-__ar[0][0] = :green
-__ar[0][1] = :blue
-stubs(:get_board).returns(__ar)
-""")
-of.write(script.read())
-script.close()
-of.close()
-
-command = "ruby %s" % workfile
+command = "ruby %s/floodit.rb" % sys.argv[1]
 
 p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux"})
 fout = open('/home/codio/workspace/autograding_logs/09_main_menu.log','wb')
