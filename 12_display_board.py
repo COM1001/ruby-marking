@@ -37,12 +37,12 @@ try:
   command = "ruby %s" % workfile
   p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems",
                                   "GEM_PATH": "/home/codio/.gems",
-                                  "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin"})
+                                  "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux"})
   fout = open('/home/codio/workspace/autograding_logs/12_display_board.log','wb')
   p.logfile = fout
   p.setecho(True)
   p.sendline()
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
   p.sendline("s")
   p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
 
