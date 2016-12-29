@@ -32,7 +32,7 @@ try:
   p.sendline()
   p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)])
   p.sendline("s")
-  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=3)
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=3)
 except:
   print("[-] Failed to check for completion - no completion displayed initially")
   sys.exit(1)
