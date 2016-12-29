@@ -60,13 +60,17 @@ try:
     # Some people want to have an additional keypress here...
     p.sendline()
     p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
+  p.close()
 
 except:
   print("[-] Main menu option to change size does not work correctly")
   sys.exit(1)
 
 try:
-  # Quiz
+  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux"})
+  p.logfile = fout
+  p.sendline()
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("q")
   p.expect(pexpect.EOF)
   print("[+] All menu options work correctly")
