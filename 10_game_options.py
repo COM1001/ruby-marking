@@ -37,9 +37,9 @@ p.logfile = fout
 p.setecho(True)
 p.sendline()
 try:
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)])
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(pexpect.TIMEOUT, timeout=3)
 except:
   print("[-] Game did not start, so could not check in-game options")
   sys.exit(1)
@@ -48,14 +48,14 @@ colours = ['r', 'g', 'b', 'y', 'c', 'm']
 for c in colours:
   p.sendline(c)
   try:
-      p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+      p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=3)
   except:
       print("[-] In-game options do not work correctly: Colour %s not accepted" % c)
       sys.exit(1)
     
 try:
   p.sendline("q")
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   print("[+] In-game options work correctly")
 except:
   print("[-] In-game options do not work correctly: Could not quit game")

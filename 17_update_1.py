@@ -34,14 +34,14 @@ p.sendline()
 try:
   p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)])
   p.sendline("s")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(pexpect.TIMEOUT, timeout=3)
 
   p.sendline("r")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=3)
   p.sendline("b")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=3)
   p.sendline()
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   print("[+] Board updating test scenario 1 worked correctly")
 except:
   print("[-] Board updating test scenario 1 not played correctly")

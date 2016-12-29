@@ -32,7 +32,7 @@ try:
   p.sendline()
   p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)])
   p.sendline("s")
-  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('.*completion.*', re.IGNORECASE), timeout=3)
 except:
   print("[-] Failed to check for completion - no completion displayed initially")
   sys.exit(1)
@@ -49,7 +49,7 @@ except:
     
 try:
   p.sendline("r")
-  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('completion.*', re.IGNORECASE), timeout=3)
 except:
   print("[-] Failed to check for completion - no completion displayed after one round")
   sys.exit(1)
@@ -65,7 +65,7 @@ except:
   
 try:
   p.sendline("b")
-  value = p.expect([re.compile('completion.*', re.IGNORECASE), re.compile('.*won.*', re.IGNORECASE)], timeout=2)
+  value = p.expect([re.compile('completion.*', re.IGNORECASE), re.compile('.*won.*', re.IGNORECASE)], timeout=3)
 
   if value == 0:
       x = float(re.sub(r'[^0-9\.]', "", p.after))

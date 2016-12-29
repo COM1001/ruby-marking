@@ -13,15 +13,15 @@ p.logfile = fout
 p.setecho(True)
 p.sendline()
 try:
-  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("c")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(pexpect.TIMEOUT, timeout=3)
   p.sendline("10")
-  p.expect(pexpect.TIMEOUT, timeout=2)
+  p.expect(pexpect.TIMEOUT, timeout=3)
   p.sendline("10")
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("s")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=3)
   exp = ""
   for i in range(10):
     for j in range(10):

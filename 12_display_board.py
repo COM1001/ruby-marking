@@ -42,9 +42,9 @@ try:
   p.logfile = fout
   p.setecho(True)
   p.sendline()
-  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=2)
+  p.expect([re.compile('main.* menu', re.IGNORECASE), re.compile('s.*=.*start game', re.IGNORECASE), re.compile('start game.*:.*s', re.IGNORECASE), re.compile('m.*a.*i.*n.*m.*e.*n.*u', re.IGNORECASE)], timeout=3)
   p.sendline("s")
-  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=2)
+  p.expect(re.compile('.*turns.*', re.IGNORECASE), timeout=3)
 
   output = p.before
   p.close()
