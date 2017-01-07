@@ -25,7 +25,7 @@ cat > $SKELETON_COMMENTS << EOF
 #       assignment brief.
 EOF
 
-COMMENTS=$(awk '{if (f==1) { r[$0] } else if (! ($0 in r)) { print $0 } } ' f=1 $SKELETON_COMMENTS f=2 $REPO/floodit.rb | grep -E ".*#[^\{].*$" | sed -e 's/^.*#//g' | wc -l)
+COMMENTS=$(awk '{if (f==1) { r[$0] } else if (! ($0 in r)) { print $0 } } ' f=1 $SKELETON_COMMENTS f=2 $REPO/*.rb | grep -E ".*#[^\{].*$" | sed -e 's/^.*#//g' | wc -l)
 
 if [ $COMMENTS -gt 10 ]; then
     echo "[+] Well documented code"

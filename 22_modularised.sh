@@ -17,7 +17,7 @@ echo "    - '\$COLOUR_HASH'" >> $RUBOCOP_FILE
 
 gem install rubocop --conservative > /dev/null 2>&1
 
-OUTPUT=$(rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb)
+OUTPUT=$(rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/*.rb)
 
 if [ $? -eq 0 ]; then
     echo "[+] Well modularised code"
@@ -25,7 +25,7 @@ if [ $? -eq 0 ]; then
     exit 0
 else
     echo "[-] Not well modularised code. Check the Rubocop output in /home/codio/workspace/autograding_logs/22_modularised.log"
-    rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/floodit.rb > /home/codio/workspace/autograding_logs/22_modularised.log
+    rubocop -c $RUBOCOP_FILE --only MethodLength,GlobalVars -D $REPO/*.rb > /home/codio/workspace/autograding_logs/22_modularised.log
     rm $RUBOCOP_FILE
     exit 1
 fi

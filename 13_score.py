@@ -4,8 +4,13 @@ import pexpect
 import re
 import sys
 from colorama import Back, Style
+import shutil
 
-workfile = "/tmp/floodit_tmp.rb"
+TMPDIR="/tmp/floodit_marking"
+shutil.rmtree(TMPDIR, True)
+shutil.copytree(sys.argv[1], TMPDIR)
+
+workfile = "%s/floodit.rb" % TMPDIR
 script = open("%s/floodit.rb" % sys.argv[1], 'r')
 of = open(workfile, 'w')
 
@@ -21,7 +26,7 @@ of.close()
 
 try:
   command = "ruby %s/floodit.rb" % sys.argv[1]
-  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux", "HOME" : "/home/codio"})
+  p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux", "HOME" : "/home/codio"}, cwd = TMPDIR)
   fout = open('/home/codio/workspace/autograding_logs/13_score.log','wb')
   p.logfile = fout
   p.setecho(True)

@@ -3,11 +3,12 @@
 import pexpect
 import re
 import sys
+import shutil
 from colorama import Back, Style
 
 
 command = "ruby %s/floodit.rb" % sys.argv[1]
-p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux", "HOME" : "/home/codio"})
+p = pexpect.spawn(command, env = {"GEM_HOME": "/home/codio/.gems", "GEM_PATH": "/home/codio/.gems", "PATH" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/codio/.gems/bin", "TERM": "linux", "HOME" : "/home/codio"}, cwd = sys.argv[1])
 fout = open('/home/codio/workspace/autograding_logs/16_sizes.log','wb')
 p.logfile = fout
 p.setecho(True)
