@@ -51,7 +51,7 @@ except:
 
 try:
   p.sendline("r")
-  p.expect(re.compile('turns.*', re.IGNORECASE), timeout=3)
+  p.expect([re.compile('turns', re.IGNORECASE), re.compile('attempts', re.IGNORECASE)], timeout=3)
 except SystemExit as e:
   raise
 except:
@@ -71,7 +71,7 @@ except:
 
 try:
   p.sendline("b")
-  p.expect(re.compile('turns.*', re.IGNORECASE), timeout=3)
+  p.expect([re.compile('turns', re.IGNORECASE), re.compile('attempts', re.IGNORECASE)], timeout=3)
 except:
   print("[-] Could not check score calculation: No score displayed after game play")
   sys.exit(1)
