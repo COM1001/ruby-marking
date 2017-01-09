@@ -53,7 +53,7 @@ try:
     col = i % 14
     p.sendline(colours[current])
     current = (current + 1) % len(colours)
-    p.expect(re.compile('turns', re.IGNORECASE), timeout=3)
+    p.expect([re.compile('turns', re.IGNORECASE), re.compile('attempts', re.IGNORECASE)], timeout=3)
     i += 1
     
   p.sendline()

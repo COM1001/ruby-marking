@@ -52,7 +52,7 @@ colours = ['g', 'b', 'y', 'c', 'm', 'r']
 for c in colours:
   p.sendline(c)
   try:
-      p.expect(re.compile('turns', re.IGNORECASE), timeout=3)
+      p.expect([re.compile('turns', re.IGNORECASE), re.compile('attempts', re.IGNORECASE)], timeout=3)
   except:
       print("[-] In-game options do not work correctly: Colour %s not accepted" % c)
       sys.exit(1)
